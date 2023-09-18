@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(255, 214, 253);
+            margin-top: 100px;
+            text-align: center;
+        }
+        input{
+            width: 25%;
+        }
+        
+    </style>
+    <script>
+        function click_calcular() {
+      let valorpeso = document.getElementById("peso").value;
+      let valoraltura = document.getElementById("altura").value;
+      if (valorpeso == ""){
+        alert("Informe o peso");
+      }else if (valoraltura == ""){
+        alert("Informe a altura");
+      }else{
+        let soma = (Number(valorpeso) / (Number(valoraltura)*Number(valoraltura))).toFixed(2);
+        document.getElementById("Soma").value = soma.toString().replace(",",".");
+        
+        if(soma<18.5){
+        document.getElementById("Classificaçao").value ="VOCÊ ESTÁ ABAIXO DO PESO";
+    }
+    else if(soma<25){
+        document.getElementById("Classificaçao").value =" VOCÊ ESTÁ NO PESO IDEAL";
+    }
+    else if(soma<30){
+        document.getElementById("Classificaçao").value =" VOCÊ ESTÁ ACIMA DO PESO";
+    }
+    else if(soma<35){
+        document.getElementById("Classificaçao").value =" VOCÊ ESTÁ COM OBESIDADE";
+    }
+    else if(soma>35){
+        document.getElementById("Classificaçao").value =" VOCÊ ESTÁ COM OBESIDADE EXTREMA";
+    }
+      }
+    }
+
+    function click_limpar() {
+      document.getElementById("peso").value = "";
+      document.getElementById("altura").value = "";
+      document.getElementById("Soma").value = "";
+      
+    }
+
+    </script>
+</head>
+<body>
+    <h1>CAUCULADORA DE IMC</h1>
+    <form>
+        <div>
+            <label for="peso">PESO:</label>
+            <input type="number" name="" id="peso">
+        </div>
+        <div>
+            <label for="altura">ALTURA:</label>
+            <input type="number" name="" id="altura">
+        </div>
+        <label for="Soma">IMC: </label>
+      <input type="number" name="" id="Soma" disabled>
+    </div>
+</div>
+<div><label for="Classificaçao">Classificação: </label>
+<input type="text" name="" id="Classificaçao" disabled></div>
+    <div>
+        <input type="button" value="Calcular" onclick="click_calcular();">
+  
+        <input type="button" value="Limpar" onclick="click_limpar();">
+
+      </div>
+    </form>
+</body>
+</html>
